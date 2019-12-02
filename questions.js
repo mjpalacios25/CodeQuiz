@@ -1,8 +1,8 @@
 var questions = [
 {
     title: "Which of the following is not true about JavaScript",
-    choices: ["JavaScript is one of three primary languages used in web development", "JavaScript can be used to dynamically change the DOM on a webpage", "JavaScript can do your laundry"],
-    answer: "JavaScript can do your laundry"
+    choices: ["It is one of three primary languages used in web development", "It can be used to dynamically change the DOM on a webpage", "It can do your laundry"],
+    answer: "It can do your laundry"
 },
 {
     title: "What does 'bubbling up' refer to?",
@@ -23,5 +23,6 @@ var questions = [
     title: "Why is the effect of event.preventDefault()?",
     choices: ["Cancels the default behavior of an element","Prevents your CSS code from working", "Keeps your code from being basic"],
     answer: "Cancels the default behavior of an element"
-},
-]
+}
+];
+

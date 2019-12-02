@@ -20,14 +20,17 @@
         <div class="container">
             <h1 class="col-md mt-3 text-center">Coding Quiz</h1>
             <div class="row border border border-primary">
-                <div class="col-md-6 mx-auto text-center" id="questions">the questions go here</div>
+                <div class="col-md-6 mx-auto text-center" id="questionText">Click below to start the quiz</div>
+            </div>
+            <div>
+                <button type="button" class="btn btn-primary btn-lg btn-block" id="start">Start Quiz</button>
             </div>
             <div class="row border border-secondary">
                 <div class="col-md-6 mx-auto text-center">
                     <ul id="answerChoices ">answers go here</ul>
-
                 </div>
             </div>
+            <div id="answerFeedback"></div>
 
         </div>
         
@@ -35,9 +38,9 @@
 
 
 
-
-        <script src="myScript.js"></script>
-        <script src="questions.js"></script>
+        <script type="text/javascript" src="questions.js"></script>
+        <script type="text/javascript" src="myScript.js"></script>
+        
     </body>
 
 

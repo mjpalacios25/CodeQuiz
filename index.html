@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div class="container border border-primary">
@@ -22,12 +22,12 @@
             <div class="row border border border-primary">
                 <div class="col-md-6 mx-auto text-center" id="questionText">Click below to start the quiz</div>
             </div>
-            <div>
+            <div id="startButtonContainer">
                 <button type="button" class="btn btn-primary btn-lg btn-block" id="start">Start Quiz</button>
             </div>
-            <div class="row border border-secondary">
+            <div class="row border border-secondary" id="answerContainer">
                 <div class="col-md-6 mx-auto text-center">
-                    <ul id="answerChoices ">answers go here</ul>
+                    <ul id="answerChoices">answers go here</ul>
                 </div>
             </div>
             <div id="answerFeedback"></div>

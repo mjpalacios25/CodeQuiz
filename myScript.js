@@ -10,11 +10,12 @@ var totalSeconds = 0
 var secondsElapsed = 0
 var interval
 
+//timer functions
 function setTotalSeconds(){
     for (i = 0; i < questions.length; i++) {
             totalSeconds += 15
         };
-   // timerEl.textContent = "Timer " + totalSeconds 
+   
 }
 
 function getMinutes(){
@@ -67,13 +68,40 @@ function stopTimer(){
     secondsElapsed = 0;
     clearInterval(interval)
 }
+//chaning question and answer elements with content from questions.js
+function questionsnChoices() {
+    for(i = 0; i < questions.length; i++) {
+       QuestionEl.textContent = questions[i].title;
+       questions[i].choices.forEach(appendChoices); 
+       
 
-setTotalSeconds();
-startTimer();
+    };
+};
+
+function appendChoices(choice){
+    var li = document.createElement("li");
+    li.innerHTML = "<button>" + choice + "</button>";
+    ChoicesEl.append(li)
+
+};
+
+
+questionsnChoices();
+
+
+// function startQuiz(){
+//   setTotalSeconds();
+//   startTimer(); 
+  
+//   if(event.target)
+
+// }
+
+
 
 
 // for function once quiz starts
-// if(event.target === "button") {
+// if(event.target.matches( "button")) {
 //     if(event.target.textContent === questions[i].answer){
 //         rightWrong.textContent = "Correct!";
 //         secondsElapsed++;

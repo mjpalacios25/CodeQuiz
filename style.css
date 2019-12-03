@@ -1,7 +1,10 @@
-#startButtonContainer {
-display: block;
-}
+
 
 #answerContainer {
 display: block;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
 }

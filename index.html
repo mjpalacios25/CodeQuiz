@@ -10,33 +10,34 @@
     </head>
     <body>
         <div class="container border border-primary">
-            <div class="col-md-4 float-left" id="highScores">
-                View High Scores
+            <div class="container">
+                <div class="col-md-4 float-left" id="highScores">
+                    View High Scores
+                </div>
+                <div class="col-md-4 float-right text-right" id="timer">
+                    Timer
+                </div>
+                <br>
+                <h1 class="col-md mt-3 text-center">Coding Quiz</h1>
             </div>
-            <div class="col-md-4 float-right text-right" id="timer">
-                Timer
-            </div>
-        </div>
-        <div class="container">
-            <h1 class="col-md mt-3 text-center">Coding Quiz</h1>
+            
             <div class="row border border border-primary">
-                <div class="col-md-6 mx-auto text-center" id="questionText">Click below to start the quiz</div>
-            </div>
-            <div id="startButtonContainer">
-                <button type="button" class="btn btn-primary btn-lg btn-block" id="start">Start Quiz</button>
-            </div>
-            <div class="row border border-secondary" id="answerContainer">
-                <div class="col-md-6 mx-auto text-center">
-                    <ul id="answerChoices">answers go here</ul>
+                <div class="col-md-10 mx-auto text-center">
+                    <div class="card" id="questionText">
+                        <div class="card-body">
+                            <p class="card-text">Click below to start the quiz</p> 
+                            <button type="button" class="btn btn-primary btn-lg " id="start">Start Quiz</button>
+                        </div>
+                    </div>
+                    <div class="container border border-secondary">
+                        <ul id="answerChoices">answers go here</ul>
+                        <div id="answerFeedback"></div>
+                    </div>
+                    
                 </div>
             </div>
-            <div id="answerFeedback"></div>
-
         </div>
         
-
-
-
 
         <script type="text/javascript" src="questions.js"></script>
         <script type="text/javascript" src="myScript.js"></script>

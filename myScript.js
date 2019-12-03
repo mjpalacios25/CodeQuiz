@@ -9,6 +9,18 @@ var userScore = 0
 var totalSeconds = 0
 var secondsElapsed = 0
 var interval
+var objIndex = 0
+var highScoreArray = [
+    {
+        initials: "tc",
+        score: "10"
+    },
+    {
+        initials: "mp",
+        score: "9"
+    }
+];
+localStorage.setItem("highScoreArray", JSON.stringify(highScoreArray));
 
 //timer functions
 function setTotalSeconds(){
@@ -68,30 +80,42 @@ function stopTimer(){
     secondsElapsed = 0;
     clearInterval(interval)
 }
-//chaning question and answer elements with content from questions.js
+//setting question and answer elements with content from questions.js
 function questionsnChoices() {
-    for(i = 0; i < questions.length; i++) {
-       QuestionEl.textContent = questions[i].title;
-       questions[i].choices.forEach(appendChoices); 
-       
+    //for(i = 0; i < questions.length; i++) {
+       QuestionEl.textContent = questions[objIndex].title;
 
+       questions[objIndex].choices.forEach(function appendChoices(choice){
+            var li = document.createElement("li");
+            li.innerHTML = "<button>" + choice + "</button>";
+            li.children[0].classList = "btn btn-primary my-1 col-12"
+            ChoicesEl.append(li)
+            }); 
+       objIndex += 1;
     };
+//};
+
+// get stored high scores
+function getScores(){
+    var storedScores = JSON.parse(localStorage.getItem("highScoreArray"));
+    if(storedScores !== null){
+        highScoreArray = storedScores
+    }
 };
+console.log(highScoreArray);
 
-function appendChoices(choice){
-    var li = document.createElement("li");
-    li.innerHTML = "<button>" + choice + "</button>";
-    ChoicesEl.append(li)
-
-};
+function storeScores() {
+    // Stringify and set "todos" key in localStorage to todos array
+    localStorage.setItem("highScoreArray", JSON.stringify(highScoreArray));
+  };
 
 
-questionsnChoices();
 
 
 // function startQuiz(){
 //   setTotalSeconds();
 //   startTimer(); 
+//   questionsnChoices(); 
   
 //   if(event.target)
 

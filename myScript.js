@@ -96,8 +96,9 @@ function questionsnChoices() {
        questions[objIndex].choices.forEach(function appendChoices(choice){
             var li = document.createElement("li");
             li.innerHTML = "<button>" + choice + "</button>";
-            li.children[0].classList = "btn btn-primary my-1 col-12"
-            ChoicesEl.append(li)
+            li.children[0].classList = "btn btn-primary my-1 col-12";
+            li.children[0].setAttribute("answered", "false")
+            ChoicesEl.append(li);
             }); 
     };
 
@@ -178,13 +179,14 @@ startQuiz.addEventListener("click", function(){
             if(this.textContent == questions[objIndex].answer) {
                 rightWrong.textContent = "Correct!";
                 userScore += 5;
-                console.log(userScore)
+                console.log(userScore);
+                this.children[0].setAttribute("disabled", true);
             } else
             {rightWrong.textContent = "Incorrect!";
             secondsElapsed += 15;
-            console.log(userScore)
+            console.log(userScore);
+            this.children[0].setAttribute("disabled", true);
             };
-            return;
         })
       
     })

@@ -13,7 +13,7 @@ This is a timed quiz that auto populates answer choices from an array of JavaScr
 
 ## Known bugs
 
-* Users can click correct answers multiple times to increase score;
+* Scores are not sorted in decsending order.
 
 ## Technologies Used
 

@@ -5,6 +5,10 @@ var ChoicesEl = document.querySelector("#answerChoices");
 var rightWrong = document.querySelector("#answerFeedback");
 var startQuiz = document.querySelector("#start");
 var nextButton = document.querySelector("#next");
+var modalEl = document.querySelector("#modal-container");
+var closeEl = document.querySelector(".close");
+var modalNameEl = document.querySelector("#modal-name");
+var scoreListEl = document.querySelector("#scoreList");
 
 
 var userScore = 0
@@ -81,10 +85,9 @@ function startTimer(){
 function stopTimer(){
     secondsElapsed = 0;
     clearInterval(interval)
-}
+};
 //setting question and answer elements with content from questions.js
 function questionsnChoices() {
-    //for(i = 0; i < questions.length; i++) {
        QuestionEl.textContent = questions[objIndex].title;
 
        questions[objIndex].choices.forEach(function appendChoices(choice){
@@ -93,12 +96,9 @@ function questionsnChoices() {
             li.children[0].classList = "btn btn-primary my-1 col-12"
             ChoicesEl.append(li)
             }); 
-       
     };
-    
-//};
 
-// get stored high scores
+// local storage of high scores
 function getScores(){
     var storedScores = JSON.parse(localStorage.getItem("highScoreArray"));
     if(storedScores !== null){
@@ -113,8 +113,33 @@ function storeScores() {
   };
 
 function finalScore(){
-    
-}
+
+};
+
+//modal events
+
+function close() {
+    modalEl.style.display = "none";
+
+};
+  
+function handleClick(event) {
+    if (event.target.matches("p")) {
+      event.preventDefault();
+      modalEl.style.display = "block";
+      modalNameEl.textContent = "High Scores";
+
+      for(i=0; i < highScoreArray.length; i++){
+      var li = document.createElement("li");  
+      var initials = highScoreArray[i].initials;
+      var testScore = highScoreArray[i].score;
+      li.innerHTML = initials + " : " + testScore;
+      scoreListEl.append(li)
+    }
+      
+  }};
+
+//start of clicking events
 
 startQuiz.addEventListener("click", function(){
     startQuiz.style.display = "none";
@@ -141,47 +166,52 @@ startQuiz.addEventListener("click", function(){
       
     })
 console.log(userScore)  
-    nextButton.addEventListener("click", function(){
+
+});
+
+nextButton.addEventListener("click", function(){
         ChoicesEl.textContent = ""
         objIndex += 1;
+
+        if(objIndex >= questions.length ) {
+            QuestionEl.textContent = "You're all done!";
+            return;
+        };
+
         questionsnChoices(); 
         document.querySelectorAll("li").forEach(function(listItem){
             listItem.addEventListener("click", function(){
                 console.log(this.textContent)
                 console.log(questions[objIndex].answer)
-                if(this.textContent == questions[objIndex].answer) {
-                    rightWrong.textContent = "Correct!"
-                } else
-                {rightWrong.textContent = "Incorrect!"};
                 
-            })
-            
-        })
+                if(this.textContent == questions[objIndex].answer) {
+                    rightWrong.textContent = "Correct!";
+                    userScore += 5;
+                    console.log(userScore);
+                } else
+                {rightWrong.textContent = "Incorrect!";
+                secondsElapsed += 15;
+                console.log(userScore)
+                };
+                // trying to stop users from 
+                // listItem.foreach(function(event){
+                //     event.preventDefault()
+                // });
 
-    })
-   
+                return;
+    
+            });
+          
+        });
 
-})
+        
 
-
-
-// function startQuiz(){
-//   
-  
-//   if(event.target)
-
-// }
-
-
-
-
-// for function once quiz starts
-// if(event.target.matches( "button")) {
-//     if(event.target.textContent === questions[i].answer){
-//         rightWrong.textContent = "Correct!";
-//         secondsElapsed++;
-//     } else{
-//         rightWrong.textContent = "Incorrect.";
-//         secondsElapsed += 15
-
-//     }
+    });
+getScores();
+highScoreEl.addEventListener("click", handleClick);
+closeEl.addEventListener("click", close);
+document.addEventListener("click", function(event) {
+    if (event.target === modalEl) {
+      close();
+    }
+  });

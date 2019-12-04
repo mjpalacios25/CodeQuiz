@@ -12,7 +12,7 @@
         <div class="container border border-primary">
             <div class="container">
                 <div class="col-md-4 float-left" id="highScores">
-                    View High Scores
+                    <p>View High Scores</p> 
                 </div>
                 <div class="col-md-4 float-right text-right" id="timer">
                     Timer
@@ -37,6 +37,24 @@
                     
                 </div>
             </div>
+            <div id="modal-container" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                          <span class="close">&times;</span>
+                          <h2 id="modal-name">
+                          </h2>
+                        </div>
+                        <div class="modal-body">
+                          <h3>
+                            High Scores:
+                          </h3>
+                          <ul id="scoreList"></ul>
+                          <div>
+                            <button id="save">Save</button>
+                          </div>
+                        </div>
+                    </div>
+                </div>
         </div>
         
 

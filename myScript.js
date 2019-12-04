@@ -4,6 +4,8 @@ var QuestionEl = document.querySelector("#questionText");
 var ChoicesEl = document.querySelector("#answerChoices");
 var rightWrong = document.querySelector("#answerFeedback");
 var startQuiz = document.querySelector("#start");
+var nextButton = document.querySelector("#next");
+
 
 var userScore = 0
 var totalSeconds = 0
@@ -91,8 +93,9 @@ function questionsnChoices() {
             li.children[0].classList = "btn btn-primary my-1 col-12"
             ChoicesEl.append(li)
             }); 
-       objIndex += 1;
+       
     };
+    
 //};
 
 // get stored high scores
@@ -109,13 +112,61 @@ function storeScores() {
     localStorage.setItem("highScoreArray", JSON.stringify(highScoreArray));
   };
 
+function finalScore(){
+    
+}
+
+startQuiz.addEventListener("click", function(){
+    startQuiz.style.display = "none";
+    nextButton.style.display = "inline";
+   setTotalSeconds();
+   startTimer(); 
+   questionsnChoices(); 
+
+    document.querySelectorAll("li").forEach(function(listItem){
+        listItem.addEventListener("click", function(){
+            console.log(this.textContent)
+            console.log(questions[objIndex].answer)
+            if(this.textContent == questions[objIndex].answer) {
+                rightWrong.textContent = "Correct!";
+                userScore += 5;
+                console.log(userScore)
+            } else
+            {rightWrong.textContent = "Incorrect!";
+            secondsElapsed += 15;
+            console.log(userScore)
+            };
+            return;
+        })
+      
+    })
+console.log(userScore)  
+    nextButton.addEventListener("click", function(){
+        ChoicesEl.textContent = ""
+        objIndex += 1;
+        questionsnChoices(); 
+        document.querySelectorAll("li").forEach(function(listItem){
+            listItem.addEventListener("click", function(){
+                console.log(this.textContent)
+                console.log(questions[objIndex].answer)
+                if(this.textContent == questions[objIndex].answer) {
+                    rightWrong.textContent = "Correct!"
+                } else
+                {rightWrong.textContent = "Incorrect!"};
+                
+            })
+            
+        })
+
+    })
+   
+
+})
 
 
 
 // function startQuiz(){
-//   setTotalSeconds();
-//   startTimer(); 
-//   questionsnChoices(); 
+//   
   
 //   if(event.target)
 

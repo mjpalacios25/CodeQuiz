@@ -1,7 +1,9 @@
+#start {
+    display: inline;
+}
 
-
-#answerContainer {
-display: block;
+#next{
+    display: none;
 }
 
 ul {

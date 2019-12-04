@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div class="container border border-primary">
+        <div class="container">
             <div class="container">
                 <div class="col-md-4 float-left" id="highScores">
                     <p>View High Scores</p> 
@@ -21,16 +21,16 @@
                 <h1 class="col-md mt-3 text-center">Coding Quiz</h1>
             </div>
             
-            <div class="row border border border-primary">
+            <div class="row">
                 <div class="col-md-10 mx-auto text-center">
                     <div class="card" id="questionText">
                         <div class="card-body">
-                            <p class="card-text">Click below to start the quiz</p> 
+                            <p class="card-text">Welcome to the coding quiz! This is a timed quiz. You will get five points for each correct answer plus extra points for how fast you finish. Click below to start the quiz... Good luck!</p> 
                             <button type="button" class="btn btn-primary btn-lg " id="start">Start Quiz</button>
                         </div>
                     </div>
-                    <div class="container border border-secondary">
-                        <ul id="answerChoices">answers go here</ul>
+                    <div class="container">
+                        <ul id="answerChoices"></ul>
                         <div id="answerFeedback"></div>
                         <button class="btn btn-primary btn-lg" id="next">Next</button>
                     </div>
@@ -40,13 +40,13 @@
             <div id="modal-container" class="modal">
                     <div class="modal-content">
                         <div class="modal-header">
-                          <span class="close">&times;</span>
+                          <p class="close">&times;</p>
                           <h2 id="modal-name">
                           </h2>
                         </div>
                         <div class="modal-body">
                           <h3>
-                            High Scores:
+                            Scores:
                           </h3>
                           <ul id="scoreList"></ul>
                         </div>
@@ -55,7 +55,6 @@
             <div id="initials-Container" class="initials">
                 <div class="initials-content">
                     <div class="initials-header">
-                        <span class="close">&times;</span>
                         <h5 id="initials-instructions">Please enter your initials</h5>
                     </div>
                     <div class="intials-body">

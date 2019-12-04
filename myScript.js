@@ -30,7 +30,6 @@ var highScoreArray = [
         score: "9"
     }
 ];
-storeScores();
 
 //timer functions
 function setTotalSeconds(){
@@ -154,9 +153,11 @@ function handleClick(event) {
   function saveUserInfo(event){
     if(event.target.matches("button")) {
         event.preventDefault();
+        scoreListEl.textContent = [];
         var initialsInput = initialsText.value;
         
         highScoreArray.push({initials: initialsInput, score: userScore});
+        storeScores();
         closeInitials();
     }
   }
@@ -236,8 +237,6 @@ nextButton.addEventListener("click", function(){
     });
 
 getScores();
-
-
 highScoreEl.addEventListener("click", handleClick);
 closeEl.addEventListener("click", closeModal);
 document.addEventListener("click", function(event) {

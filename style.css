@@ -42,3 +42,25 @@ span {
     width: 80%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   }
+
+  .initials {
+    display: none;
+  }
+
+  .initials-header {
+    padding: 2px 16px;
+    background-color: #586994;
+    color: white;
+  }
+
+.initials-body {padding: 2px 16px;}
+  
+.initials-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  }

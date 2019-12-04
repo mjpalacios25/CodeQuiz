@@ -9,6 +9,10 @@ var modalEl = document.querySelector("#modal-container");
 var closeEl = document.querySelector(".close");
 var modalNameEl = document.querySelector("#modal-name");
 var scoreListEl = document.querySelector("#scoreList");
+var initialsEl = document.querySelector("#initials-Container");
+var initialsText = document.querySelector("#initials-enter");
+var finalScoreEl = document.querySelector("#testScore")
+var saveBtn = document.querySelector("#save");
 
 
 var userScore = 0
@@ -26,7 +30,7 @@ var highScoreArray = [
         score: "9"
     }
 ];
-localStorage.setItem("highScoreArray", JSON.stringify(highScoreArray));
+storeScores();
 
 //timer functions
 function setTotalSeconds(){
@@ -98,11 +102,13 @@ function questionsnChoices() {
             }); 
     };
 
-// local storage of high scores
+// local storage of scores
 function getScores(){
     var storedScores = JSON.parse(localStorage.getItem("highScoreArray"));
     if(storedScores !== null){
         highScoreArray = storedScores
+    } else {
+        highScoreArray = []
     }
 };
 console.log(highScoreArray);
@@ -113,13 +119,19 @@ function storeScores() {
   };
 
 function finalScore(){
-
+    var secondsLeft = totalSeconds - secondsElapsed
+    userScore = userScore + secondsLeft;
 };
 
 //modal events
 
-function close() {
+function closeModal() {
     modalEl.style.display = "none";
+
+};
+
+function closeInitials() {
+    initialsEl.style.display = "none";
 
 };
   
@@ -138,6 +150,16 @@ function handleClick(event) {
     }
       
   }};
+
+  function saveUserInfo(event){
+    if(event.target.matches("button")) {
+        event.preventDefault();
+        var initialsInput = initialsText.value;
+        
+        highScoreArray.push({initials: initialsInput, score: userScore});
+        closeInitials();
+    }
+  }
 
 //start of clicking events
 
@@ -175,6 +197,11 @@ nextButton.addEventListener("click", function(){
 
         if(objIndex >= questions.length ) {
             QuestionEl.textContent = "You're all done!";
+            finalScore();
+            console.log(userScore);
+            initialsEl.style.display = "block";
+            finalScoreEl.textContent = userScore;
+            stopTimer();
             return;
         };
 
@@ -207,11 +234,16 @@ nextButton.addEventListener("click", function(){
         
 
     });
+
 getScores();
+
+
 highScoreEl.addEventListener("click", handleClick);
-closeEl.addEventListener("click", close);
+closeEl.addEventListener("click", closeModal);
 document.addEventListener("click", function(event) {
     if (event.target === modalEl) {
-      close();
+      closeModal();
     }
   });
+
+saveBtn.addEventListener("click", saveUserInfo);

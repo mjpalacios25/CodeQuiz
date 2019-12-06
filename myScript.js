@@ -23,11 +23,11 @@ var objIndex = 0
 var highScoreArray = [
     {
         initials: "tc",
-        score: "10"
+        score: "60"
     },
     {
         initials: "mp",
-        score: "9"
+        score: "50"
     }
 ];
 
@@ -205,6 +205,7 @@ nextButton.addEventListener("click", function(){
             initialsEl.style.display = "block";
             finalScoreEl.textContent = userScore;
             stopTimer();
+            this.setAttribute("disabled", true);
             return;
         };
 
